@@ -4,12 +4,12 @@
 Was given a broken batch script on an Ubuntu machine that searches for a flag (thm-flag01-script) in .log files inside a specific directory (/var/log). 
 The script had empty variables and wouldn't function until it was fixed. 
 
-# What I did to fix it
+# What I did to fix it:
 
 * The user I connected to the machine on didn't have permissions to search system directories, so I used sudo su to become root user for full access.
 * I edited the broken script located at /home/user/flag_hunt.sh
 
-# Previous Script with errors
+# Previous Script with errors:
 ```
 #!/bin/bash
 
@@ -30,7 +30,7 @@ for file in " "/*.log; do
 done
 ```
 
-# Commands and Fixes
+# Commands and Fixes:
 
 | Command / Action                                                  | What it does                         | Why it was needed                                    |
 | ----------------------------------------------------------------- | ------------------------------------ | ---------------------------------------------------- |
@@ -40,7 +40,7 @@ done
 | Edited `for file in " "/*.log` → `for file in "$directory"/*.log` | Fixed undefined file path            | Made the loop search in the intended directory       |
 
 
-# Updated Script
+# Updated Script:
 ```
 #!/bin/bash
 
@@ -58,10 +58,10 @@ if grep -q "$flag" "$file"; then
     fi
 done
 ```
-# Flag Found
+# Flag Found:
 ```
 Flag found in authentication.log
-
+```
 
 
 
